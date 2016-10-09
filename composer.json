@@ -1,0 +1,19 @@
+{
+  "name": "yuncms/yii2-system",
+  "description": "The system extension for the yuncms",
+  "keywords": [
+    "yuncms",
+    "system",
+    "common"
+  ],
+  "type": "yii2-extension",
+  "license": "BSD-3-Clause",
+  "require": {
+    "yiisoft/yii2": "~2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "yuncms\\system\\": ""
+    }
+  }
+}
