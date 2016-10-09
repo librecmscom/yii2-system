@@ -5,7 +5,7 @@
  * @license http://www.tintsoft.com/license/
  */
 
-namespace yuncms\user\helpers;
+namespace yuncms\system\helpers;
 
 use Yii;
 use DateTime;
