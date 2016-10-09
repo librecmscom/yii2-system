@@ -15,7 +15,7 @@ use yii\helpers\ArrayHelper;
 /**
  * 时区助手
  */
-class Timezone
+class TimeZoneHelper
 {
     /**
      * Get all of the time zones with the offsets sorted by their offset

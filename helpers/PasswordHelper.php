@@ -12,7 +12,7 @@ use Yii;
 /**
  * 密码助手
  */
-class Password
+class PasswordHelper
 {
     /**
      * Wrapper for yii security helper method.
