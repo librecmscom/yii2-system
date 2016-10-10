@@ -60,7 +60,7 @@ class DateHelper
     {
         $week = $week ? $week : date('w');
         $weekArr = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        return Yii::t('common', $weekArr [$week]);
+        return Yii::t('app', $weekArr [$week]);
     }
 
     /**
@@ -116,7 +116,7 @@ class DateHelper
         } elseif ($hour >= 22 && $hour <= 23) {
             $period = '深夜';
         }
-        return Yii::t('common', $period);
+        return Yii::t('app', $period);
     }
 
     /**
