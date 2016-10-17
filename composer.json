@@ -16,5 +16,8 @@
     "psr-4": {
       "yuncms\\system\\": "src"
     }
+  },
+  "extra": {
+    "bootstrap": "yuncms\\system\\Bootstrap"
   }
 }
