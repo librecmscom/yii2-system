@@ -20,6 +20,22 @@ class Bootstrap implements BootstrapInterface
 {
     public function bootstrap($app)
     {
-        
+        if (($app->get('fs', false)) == null) {
+            $app->set('authManager', [
+                'fs' => 'creocoder\flysystem\LocalFilesystem',
+                'path' => '@uploads',
+            ]);
+        }
+
+        /**
+         * 注册语言包
+         */
+        if (!isset($app->get('i18n')->translations['system*'])) {
+            $app->get('i18n')->translations['system*'] = [
+                'class' => PhpMessageSource::className(),
+                'sourceLanguage' => 'en-US',
+                'basePath' => __DIR__ . '/messages',
+            ];
+        }
     }
 }
