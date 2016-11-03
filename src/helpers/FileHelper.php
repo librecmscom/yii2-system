@@ -69,7 +69,7 @@ class FileHelper extends \yii\helpers\FileHelper
      *
      * @param  string $path 原始路径
      * @param  string $target 新路径
-     * @return void
+     * @return bool true on success or false on failure.
      */
     public static function move($path, $target)
     {
@@ -81,7 +81,7 @@ class FileHelper extends \yii\helpers\FileHelper
      *
      * @param  string $path 原始路径
      * @param  string $target 新路径
-     * @return void
+     * @return bool true on success or false on failure.
      */
     public static function copy($path, $target)
     {
@@ -141,19 +141,25 @@ class FileHelper extends \yii\helpers\FileHelper
     }
 
     /**
-     * 获取目录中的所有文件的数组。
-     *
-     * @param  string $directory
-     * @return array
+     * 使用RecursiveDirectoryIterator遍历文件，列出所有文件路径
+     * @param \RecursiveDirectoryIterator|string $directory 指定了目录的RecursiveDirectoryIterator实例
+     * @return array $files 文件列表
      */
-    public static function files($directory)
-    {
-        $glob = glob($directory . '/*');
-
-        if ($glob === false) return [];
-        return array_filter($glob, function ($file) {
-            return filetype($file) == 'file';
-        });
+    public static function files(\RecursiveDirectoryIterator $directory) {
+        if(!$directory instanceof \RecursiveDirectoryIterator){
+            $directory = new \RecursiveDirectoryIterator($directory);
+        }
+        $files = [];
+        for (; $directory->valid(); $directory->next()) {
+            if ($directory->isDir() && !$directory->isDot()) {
+                if ($directory->haschildren()) {
+                    $files = array_merge($files, static::getFiles($directory->getChildren()));
+                };
+            } else if($directory->isFile()) {
+                $files[] = $directory->getPathName();
+            }
+        }
+        return $files;
     }
 
     /**
@@ -166,30 +172,5 @@ class FileHelper extends \yii\helpers\FileHelper
     {
         self::removeDirectory($directory);
         return self::createDirectory($directory);
-    }
-
-    /**
-     * 是否是空文件夹
-     * @param string $directory
-     * @return bool
-     * @throws InvalidParamException
-     */
-    public static function isEmptyDirectory($directory)
-    {
-        $isEmpty = true;
-        $directory = static::normalizePath($directory);
-        $handle = opendir($directory);
-        if ($handle === false) {
-            throw new InvalidParamException("Unable to open directory: $directory");
-        }
-        while (($file = readdir($handle)) !== false) {
-            if ($file === '.' || $file === '..') {
-                continue;
-            }
-            $isEmpty = false;
-            break;
-        }
-        closedir($handle);
-        return $isEmpty;
     }
 }
