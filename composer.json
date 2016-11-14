@@ -13,6 +13,9 @@
     "creocoder/yii2-flysystem": "0.8.*"
   },
   "autoload": {
+    "files": [
+      "src/helpers.php"
+    ],
     "psr-4": {
       "yuncms\\system\\": "src"
     }

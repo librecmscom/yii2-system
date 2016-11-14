@@ -13,17 +13,6 @@ namespace yuncms\system\helpers;
 class StringHelper extends \yii\helpers\StringHelper
 {
     /**
-     * 求取字符串长度
-     *
-     * @param string $string 要计算的字符串编码
-     * @return int
-     */
-    public static function strlen($string)
-    {
-        return self::byteLength($string);
-    }
-
-    /**
      * 截取字符串,无视编码
      *
      * @param string $string 要截取的字符串编码
