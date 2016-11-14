@@ -153,7 +153,7 @@ class FileHelper extends \yii\helpers\FileHelper
         for (; $directory->valid(); $directory->next()) {
             if ($directory->isDir() && !$directory->isDot()) {
                 if ($directory->haschildren()) {
-                    $files = array_merge($files, static::getFiles($directory->getChildren()));
+                    $files = array_merge($files, static::files($directory->getChildren()));
                 };
             } else if($directory->isFile()) {
                 $files[] = $directory->getPathName();
