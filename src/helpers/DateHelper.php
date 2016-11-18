@@ -383,4 +383,23 @@ class DateHelper
         }
         return $sort ? array_reverse($arr) : $arr;
     }
+
+    /**
+     * 获取今天开始时间戳
+     * @return int
+     */
+    public static function TodayFirstSecond()
+    {
+        return mktime(0, 0, 0, date("m", time()), date("d", time()), date("Y", time()));
+    }
+
+    /**
+     * 获取今天结束时间戳
+     * @return int
+     */
+    public static function TodayLastSecond()
+    {
+        return mktime(23, 59, 59, date("m", time()), date("d", time()), date("Y", time()));
+    }
+
 }
