@@ -208,7 +208,7 @@ class DateHelper
      */
     public static function dateDiff($interval, $startDateTime, $endDateTime)
     {
-        $diff = self::getTimestamp($endDateTime) - self::getTimestamp($startDateTime);
+        $diff = static::getTimestamp($endDateTime) - static::getTimestamp($startDateTime);
         switch ($interval) {
             case 'Y' : // 年
                 $result = bcdiv($diff, 60 * 60 * 24 * 365);
@@ -308,6 +308,27 @@ class DateHelper
     }
 
     /**
+     * 获取两个日期之间范围
+     *
+     * @param string $startDateTime
+     * @param string $endDateTime
+     * @param bool $sort
+     * @param string $format
+     * @return array 返回日期数组
+     */
+    public static function getDayRangeInBetweenDate($startDateTime, $endDateTime, $sort = false, $format = 'Y-m-d')
+    {
+        $startDateTime = self::getTimestamp($startDateTime);
+        $endDateTime = self::getTimestamp($endDateTime);
+        $num = ($endDateTime - $startDateTime) / 86400;
+        $arr = [];
+        for ($i = 0; $i <= $num; $i++) {
+            $arr [] = date($format, $startDateTime + 86400 * $i);
+        }
+        return $sort ? array_reverse($arr) : $arr;
+    }
+    
+    /**
      * 获取年份的第一天
      *
      * @param int $year 年份
@@ -364,31 +385,10 @@ class DateHelper
     }
 
     /**
-     * 获取两个日期之间范围
-     *
-     * @param string $startDateTime
-     * @param string $endDateTime
-     * @param bool $sort
-     * @param string $format
-     * @return array 返回日期数组
-     */
-    public static function getDayRangeInBetweenDate($startDateTime, $endDateTime, $sort = false, $format = 'Y-m-d')
-    {
-        $startDateTime = self::getTimestamp($startDateTime);
-        $endDateTime = self::getTimestamp($endDateTime);
-        $num = ($endDateTime - $startDateTime) / 86400;
-        $arr = [];
-        for ($i = 0; $i <= $num; $i++) {
-            $arr [] = date($format, $startDateTime + 86400 * $i);
-        }
-        return $sort ? array_reverse($arr) : $arr;
-    }
-
-    /**
      * 获取今天开始时间戳
      * @return int
      */
-    public static function TodayFirstSecond()
+    public static function todayFirstSecond()
     {
         return mktime(0, 0, 0, date("m", time()), date("d", time()), date("Y", time()));
     }
@@ -397,9 +397,165 @@ class DateHelper
      * 获取今天结束时间戳
      * @return int
      */
-    public static function TodayLastSecond()
+    public static function todayLastSecond()
     {
         return mktime(23, 59, 59, date("m", time()), date("d", time()), date("Y", time()));
     }
+
+    /**
+     * 获取本周开始时间戳
+     * @return int
+     */
+    public static function weekFirstSecond()
+    {
+        return strtotime(date('Y-m-d', time() - ((date('w') == 0 ? 7 : date('w')) - 1) * 24 * 3600));
+    }
+
+    /**
+     * 获取本周结束时间戳
+     *
+     * @return int
+     */
+    public static function weekLastSecond()
+    {
+        return strtotime(date('Y-m-d', time() + (7 - (date('w') == 0 ? 7 : date('w'))) * 24 * 3600) . ' 23:59:59');
+    }
+
+    /**
+     * 获取上周开始时间戳
+     * @return int
+     */
+    public static function lastWeekFirstSecond()
+    {
+        return strtotime('-1 monday', time());
+    }
+
+    /**
+     * 获取上周结束时间戳
+     * @return
+     */
+    public static function lastWeekLastSecond()
+    {
+        return strtotime('-1 sunday', time()) + 86399;
+    }
+
+    /**
+     * 获取上月开始时间戳
+     * @return mixed
+     */
+    public static function lastMonthFirstSecond()
+    {
+        return strtotime(date('Y-m', strtotime('-1 month', time())) . '-01 00:00:00');
+    }
+
+    /**
+     * 获取上月结束时间戳
+     * @return mixed
+     */
+    public static function lastMonthLastSecond()
+    {
+        return strtotime(date('Y-m', strtotime('-1 month', time())) . '-' . date('t', strtotime('-1 month', time())) . ' 23:59:59');
+    }
+
+    /**
+     * 获取本月1日0点时间戳
+     *
+     * @return int
+     */
+    public static function monthFirstSecond()
+    {
+        return strtotime(date('Y-m', time()) . '-01 00:00:00');
+    }
+
+    /**
+     * 获取本月最后一日结束时间戳
+     * @return int
+     */
+    public static function monthLastSecond()
+    {
+        return strtotime(date('Y-m', time()) . '-' . date('t', time()) . ' 23:59:59');
+    }
+
+    /**
+     * 获取下月1日开始时间戳
+     *
+     * @return int
+     */
+    public static function nextMonthFirstSecond()
+    {
+        return get_month_end() + 86400;
+    }
+
+    /**
+     * 获取下月最后一日结束时间戳
+     *
+     * @return int
+     */
+    public static function nextMonthLastSecond()
+    {
+        return strtotime(date('Y-m', get_next_month_start()) . '-' . date('t', get_next_month_start()) . ' 23:59:59');
+    }
+
+    /**
+     * 获取上季度开始
+     *
+     * @return int
+     */
+    public static function lastQuarterFirstSecond()
+    {
+        $season = ceil((date('n')) / 3) - 1;
+        return mktime(0, 0, 0, $season * 3 - 3 + 1, 1, date('Y'));
+    }
+
+    /**
+     * 获取上季度结束
+     *
+     * @return int
+     */
+    public static function lastQuarterLastSecond()
+    {
+        $season = ceil((date('n')) / 3) - 1;
+        return mktime(23, 59, 59, $season * 3, date('t', mktime(0, 0, 0, $season * 3, 1, date("Y"))), date('Y'));
+    }
+
+    /**
+     * 获取本季度开始
+     *
+     * @return int
+     */
+    public static function QuarterFirstSecond()
+    {
+        $season = ceil((date('n')) / 3);
+        return mktime(0, 0, 0, $season * 3 - 3 + 1, 1, date('Y'));
+    }
+
+    /**
+     * 获取本季度结束
+     * @return int
+     */
+    public static function QuarterLastSecond()
+    {
+        $season = ceil((date('n')) / 3);
+        return mktime(23, 59, 59, $season * 3, date('t', mktime(0, 0, 0, $season * 3, 1, date("Y"))), date('Y'));
+    }
+
+    /**
+     * 获取本年开始时间戳
+     * @return int
+     */
+    public static function yearFirstSecond()
+    {
+        return strtotime(date('Y') . '-01-01 00:00:00');
+    }
+
+    /**
+     * 获取本年结束时间戳
+     * @return int
+     */
+    public static function yearLastSecond()
+    {
+        return strtotime(date('Y') . '-12-31 23:59:59');
+    }
+
 
 }
