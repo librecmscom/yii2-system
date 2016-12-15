@@ -483,7 +483,7 @@ class DateHelper
      */
     public static function nextMonthFirstSecond()
     {
-        return get_month_end() + 86400;
+        return static::monthLastSecond() + 86400;
     }
 
     /**
@@ -493,7 +493,7 @@ class DateHelper
      */
     public static function nextMonthLastSecond()
     {
-        return strtotime(date('Y-m', get_next_month_start()) . '-' . date('t', get_next_month_start()) . ' 23:59:59');
+        return strtotime(date('Y-m', static::nextMonthFirstSecond()) . '-' . date('t', static::nextMonthFirstSecond()) . ' 23:59:59');
     }
 
     /**
