@@ -268,14 +268,38 @@ class CountryHelper
      */
     public static function getCountryAll()
     {
-        $countrys = [];
-        foreach (static::$identifiers as $identifier => $name) {
-            $countrys[] = [
+        $countries = [];
+        foreach (static::$identifiers as $identifier => $country) {
+            $countries[] = [
                 "identifier" => $identifier,
-                "name" => $name
+                "name" => $country
             ];
         }
-        ArrayHelper::multisort($countrys, "identifier", SORT_ASC, SORT_NUMERIC);
-        return $countrys;
+        ArrayHelper::multisort($countries, "identifier", SORT_ASC, SORT_NUMERIC);
+        return $countries;
+    }
+
+    /**
+     * 通过标识符获取国家名称
+     * @param string $identifier
+     * @return bool|mixed
+     */
+    public static function getCountry($identifier)
+    {
+        if (isset(static::$identifiers[$identifier])) {
+            return static::$identifiers[$identifier];
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 通过国家名称获取标识符
+     * @param string $country
+     * @return bool|mixed
+     */
+    public static function getIdentifier($country)
+    {
+        return array_search($country, static::$identifiers, true);
     }
 }
