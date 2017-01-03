@@ -19,11 +19,11 @@ class M161221092135Create_currencies_table extends Migration
             //English short name
             'name' => $this->string()->notNull()->unique(),
             'code' => $this->string(10)->notNull()->unique(),
-            'number' => $this->integer(3)->notNull()->unique(),
-            'digits_after' => $this->string(10),
+            'numeric' => $this->integer(3)->notNull()->unique(),
+            'decimals' => $this->string(10),
         ], $tableOptions);
 
-        $this->batchInsert('{{%currencies}}', ['name', 'code', 'number', 'digits_after'], [
+        $this->batchInsert('{{%currencies}}', ['name', 'code', 'numeric', 'decimals'], [
             ['United Arab Emirates dirham', 'AED', '784', '2'],
             ['Afghan afghani', 'AFN', '971', '2'],
             ['Albanian lek', 'ALL', '8', '2'],
@@ -203,6 +203,7 @@ class M161221092135Create_currencies_table extends Migration
             ['South African rand', 'ZAR', '710', '2'],
             ['Zambian kwacha', 'ZMW', '967', '2'],
             ['Zimbabwean dollar A/10', 'ZWL', '932', '2'],
+            ['Internet', 'BTC', 'null', '8'],
         ]);
     }
 
