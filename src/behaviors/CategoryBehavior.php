@@ -34,6 +34,11 @@ class CategoryBehavior extends Behavior
     public $categoryValueAttribute = 'name';
 
     /**
+     * @var string|false the tags model frequency attribute name
+     */
+    public $categoryFrequencyAttribute = 'frequency';
+
+    /**
      * @var string[]
      */
     private $_categoryValues;
@@ -152,6 +157,11 @@ class CategoryBehavior extends Behavior
         foreach ($this->_categoryValues as $value) {
             /* @var ActiveRecord $category */
             $category = $class::findOne([$this->categoryValueAttribute => $value]);
+
+            if ($this->categoryFrequencyAttribute !== false) {
+                $frequency = $category->getAttribute($this->categoryFrequencyAttribute);
+                $category->setAttribute($this->categoryFrequencyAttribute, ++$frequency);
+            }
 
             if ($category !== null && $category->save()) {
                 $rows[] = [$this->owner->getPrimaryKey(), $category->getPrimaryKey()];
