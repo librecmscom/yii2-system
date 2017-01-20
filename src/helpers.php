@@ -4,6 +4,24 @@
  * @copyright Copyright (c) 2012 TintSoft Technology Co. Ltd.
  * @license http://www.tintsoft.com/license/
  */
+
+/**
+ * 获取环境变量
+ * @param string $key
+ * @param null|string|int $default
+ * @return null|string|int
+ */
+if (!function_exists('env')) {
+    function env($key, $default = null)
+    {
+        $value = getenv($key);
+        if ($value === false) {
+            return $default;
+        }
+        return $value;
+    }
+}
+
 /**
  * 将时间戳格式化
  */
@@ -68,7 +86,7 @@ if (!function_exists('pullword')) {
                     $so->send_text($string);
                     $words = [];
                     while ($tmp = $so->get_result()) {
-                        $words = array_merge($words,$tmp);
+                        $words = array_merge($words, $tmp);
                     }
                     $so->close();
                     return $words;
@@ -126,10 +144,10 @@ if (!function_exists('http_build_url')) {
      * The parts of the second URL will be merged into the first according to
      * the flags argument.
      *
-     * @param mixed $url     (part(s) of) an URL in form of a string or
+     * @param mixed $url (part(s) of) an URL in form of a string or
      *                       associative array like parse_url() returns
-     * @param mixed $parts   same as the first argument
-     * @param int   $flags   a bitmask of binary or'ed HTTP_URL constants;
+     * @param mixed $parts same as the first argument
+     * @param int $flags a bitmask of binary or'ed HTTP_URL constants;
      *                       HTTP_URL_REPLACE is the default
      * @param array $new_url if set, it will be filled with the parts of the
      *                       composed url like parse_url() would return
