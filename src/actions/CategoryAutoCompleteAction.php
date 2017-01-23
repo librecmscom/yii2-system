@@ -9,17 +9,17 @@ namespace yuncms\system\actions;
 use Yii;
 use yii\base\Action;
 use yii\web\Response;
-use yuncms\system\models\Language;
+use yuncms\system\models\Category;
 
 /**
- * Class AutoCompleteAction
+ * Class CategoryAutoCompleteAction
  *
  * ```php
  * public function actions()
  * {
  *      return [
  *          'auto-complete' => [
- *              'class' => 'yuncms\tag\actions\AutoCompleteAction',
+ *              'class' => 'yuncms\tag\actions\CategoryAutoCompleteAction',
  *              'clientIdGetParamName'=>'query',
  *              'clientLimitGetParamName'=>'limit',
  *          ]
@@ -28,7 +28,7 @@ use yuncms\system\models\Language;
  * ```
  *
  */
-class LanguageAutoCompleteAction extends Action
+class CategoryAutoCompleteAction extends Action
 {
 
     public $clientIdGetParamName = 'query';
@@ -41,7 +41,7 @@ class LanguageAutoCompleteAction extends Action
     public function run()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $query = Language::find();
+        $query = Category::find();
         $rows = $query->select(['id', 'name', 'name as text'])
             ->where(['like', 'name', Yii::$app->request->get($this->clientIdGetParamName)])
             ->orderBy(['name' => SORT_ASC])
