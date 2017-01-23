@@ -47,7 +47,7 @@ class Category extends ActiveRecord
     {
         if (empty($this->pinyin)) {
             $py = new Pinyin();
-            $this->pinyin = strtolower($py->permalink($this->title, ''));
+            $this->pinyin = strtolower($py->permalink($this->name, ''));
         }
         if (empty($this->letter)) {
             $this->letter = strtoupper(substr($this->pinyin, 0, 1));
