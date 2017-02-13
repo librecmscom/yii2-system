@@ -16,29 +16,5 @@ use yii\helpers\FileHelper;
  */
 class Module extends \yii\base\Module
 {
-    /**
-     * 初始化
-     */
-    public function init()
-    {
-        parent::init();
-        $this->registerTranslations();
-    }
 
-    /**
-     * 注册语言包
-     */
-    public function registerTranslations()
-    {
-        /**
-         * 注册语言包
-         */
-        if (!isset(Yii::$app->i18n->translations['system*'])) {
-            Yii::$app->i18n->translations['system*'] = [
-                'class' => 'yii\i18n\PhpMessageSource',
-                'sourceLanguage' => 'en-US',
-                'basePath' => __DIR__ . '/messages',
-            ];
-        }
-    }
 }
