@@ -32,6 +32,9 @@ class Bootstrap implements BootstrapInterface
             } else if (class_exists('\yuncms\admin\Application') && $app instanceof \yuncms\admin\Application) {
 
             } elseif ($module instanceof Module) {//前台判断放最后
+                $app->urlManager->addRules([
+                    'system/page' => 'system/page/view',
+                ]);
                 //注册Url管理
                 $app->urlManager->addRules([
                     [
