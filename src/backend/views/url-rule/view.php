@@ -1,6 +1,6 @@
 <?php
 
-use yuncms\admin\helpers\Html;
+use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yuncms\admin\widgets\Jarvis;
 
@@ -8,7 +8,7 @@ use yuncms\admin\widgets\Jarvis;
 /* @var $model common\models\UrlRule */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend/url-rule', 'Manage Url Rule'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('system', 'Manage Url Rule'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <section id="widget-grid">
@@ -21,21 +21,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => Html::encode($this->title),
                 'bodyToolbarActions' => [
                     [
-                        'label' => Yii::t('backend/url-rule', 'Manage Url Rule'),
-                        'url' => ['/url-rule/index'],
+                        'label' => Yii::t('system', 'Manage Url Rule'),
+                        'url' => ['index'],
                     ],
                     [
-                        'label' => Yii::t('backend/url-rule', 'Create Url Rule'),
-                        'url' => ['/url-rule/create'],
+                        'label' => Yii::t('system', 'Create Url Rule'),
+                        'url' => ['create'],
                     ],
                     [
-                        'label' => Yii::t('backend/url-rule', 'Update Url Rule'),
-                        'url' => ['/url-rule/update', 'id' => $model->id],
+                        'label' => Yii::t('system', 'Update Url Rule'),
+                        'url' => ['update', 'id' => $model->id],
                         'options' => ['class' => 'btn btn-primary btn-sm']
                     ],
                     [
-                        'label' => Yii::t('backend/url-rule', 'Delete Url Rule'),
-                        'url' => ['/url-rule/delete', 'id' => $model->id],
+                        'label' => Yii::t('system', 'Delete Url Rule'),
+                        'url' => ['delete', 'id' => $model->id],
                         'options' => [
                             'class' => 'btn btn-danger btn-sm',
                             'data' => [
@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= DetailView::widget([
                 'model' => $model,
                 'attributes' => [
-                            'id',
+                    'id',
                     'slug',
                     'route',
                     'params',

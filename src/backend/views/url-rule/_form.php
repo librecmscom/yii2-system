@@ -1,7 +1,7 @@
 <?php
+use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use yuncms\admin\helpers\Html;
-use common\models\UrlRule;
+use yuncms\system\models\UrlRule;
 
 /* @var \yii\web\View $this */
 /* @var common\models\UrlRule $model */

@@ -124,7 +124,7 @@ class Page extends ActiveRecord
         } else {
             $url = new UrlRule([
                 'slug' => $this->route,
-                'route' => '/page/view',
+                'route' => '/system/page/view',
                 'params' => $params,
             ]);
             $url->save();

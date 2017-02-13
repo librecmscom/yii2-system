@@ -42,6 +42,6 @@ return [
     'messageTable' => '{{%message}}',
     'catalog' => 'messages',
     'ignoreCategories' => [
-        'app'
+        'app','yii'
     ],
 ];

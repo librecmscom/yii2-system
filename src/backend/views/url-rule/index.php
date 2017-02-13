@@ -1,16 +1,16 @@
 <?php
 
-use yuncms\admin\helpers\Html;
-use yuncms\admin\widgets\Jarvis;
+use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
-use common\models\UrlRule;
+use yuncms\system\models\UrlRule;
+use yuncms\admin\widgets\Jarvis;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\UrlRuleSearch */
+/* @var $searchModel yuncms\system\backend\models\UrlRuleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend/url-rule', 'Manage Url Rule');
+$this->title = Yii::t('system', 'Manage Url Rule');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <section id="widget-grid">
@@ -24,12 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => Html::encode($this->title),
                 'bodyToolbarActions' => [
                     [
-                        'label' => Yii::t('backend/url-rule', 'Manage Url Rule'),
-                        'url' => ['/url-rule/index'],
+                        'label' => Yii::t('system', 'Manage Url Rule'),
+                        'url' => ['index'],
                     ],
                     [
-                        'label' => Yii::t('backend/url-rule', 'Create Url Rule'),
-                        'url' => ['/url-rule/create'],
+                        'label' => Yii::t('system', 'Create Url Rule'),
+                        'url' => ['create'],
                     ],
                 ]
             ]); ?>
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'status',
                         'value' => function ($model) {
-                            return $model->status == UrlRule::STATUS_ACTIVE ? Yii::t('backend/url-rule', 'Active') : Yii::t('backend/url-rule', 'Disable');
+                            return $model->status == UrlRule::STATUS_ACTIVE ? Yii::t('system', 'Active') : Yii::t('system', 'Disable');
                         },
                         'label' => Yii::t('app', 'Status'),
                     ],

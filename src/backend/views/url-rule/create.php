@@ -1,13 +1,13 @@
 <?php
 
-use yuncms\admin\helpers\Html;
+use yii\helpers\Html;
 use yuncms\admin\widgets\Jarvis;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\UrlRule */
 
-$this->title = Yii::t('backend/url-rule', 'Create Url Rule');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend/url-rule', 'Manage Url Rule'), 'url' => ['index']];
+$this->title = Yii::t('system', 'Create Url Rule');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('system', 'Manage Url Rule'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <section id="widget-grid">
@@ -19,12 +19,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => Html::encode($this->title),
                 'bodyToolbarActions' => [
                     [
-                        'label' => Yii::t('backend/url-rule', 'Manage Url Rule'),
-                        'url' => ['/url-rule/index'],
+                        'label' => Yii::t('system', 'Manage Url Rule'),
+                        'url' => ['index'],
                     ],
                     [
-                        'label' => Yii::t('backend/url-rule', 'Create Url Rule'),
-                        'url' => ['/url-rule/create'],
+                        'label' => Yii::t('system', 'Create Url Rule'),
+                        'url' => ['create'],
                     ],
                 ]
             ]); ?>

@@ -1,13 +1,13 @@
 <?php
 
-use yuncms\admin\helpers\Html;
+use yii\helpers\Html;
 use yuncms\admin\widgets\Jarvis;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\UrlRule */
 
-$this->title = Yii::t('backend/url-rule', 'Update Url Rule') . ': ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend/url-rule', 'Manage Url Rule'), 'url' => ['index']];
+$this->title = Yii::t('system', 'Update Url Rule') . ': ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('system', 'Manage Url Rule'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
@@ -20,12 +20,12 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
                 'header' => Html::encode($this->title),
                 'bodyToolbarActions' => [
                     [
-                        'label' => Yii::t('backend/url-rule', 'Manage Url Rule'),
-                        'url' => ['/url-rule/index'],
+                        'label' => Yii::t('system', 'Manage Url Rule'),
+                        'url' => ['index'],
                     ],
                     [
-                        'label' => Yii::t('backend/url-rule', 'Create Url Rule'),
-                        'url' => ['/url-rule/create'],
+                        'label' => Yii::t('system', 'Create Url Rule'),
+                        'url' => ['create'],
                     ],
                 ]
             ]); ?>
