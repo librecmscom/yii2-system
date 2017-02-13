@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Published in' => '发布于',
     'Active' => '可用',
     'Content' => '内容',
     'Create Page' => '创建页面',
