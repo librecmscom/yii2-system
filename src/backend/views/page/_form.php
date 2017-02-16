@@ -1,8 +1,8 @@
 <?php
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
-use yuncms\admin\widgets\UEditor;
 use yuncms\system\models\Page;
+use xutl\ueditor\UEditor;
 
 /* @var \yii\web\View $this */
 /* @var common\models\Page $model */
@@ -18,7 +18,9 @@ use yuncms\system\models\Page;
 
     <?= $form->field($model, 'route')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'content')->widget(UEditor::className()) ?>
+    <?= $form->field($model, 'content')->widget(UEditor::className(),[
+        
+    ]) ?>
 
     <?= $form->field($model, 'view')->textInput(['maxlength' => true]) ?>
 
