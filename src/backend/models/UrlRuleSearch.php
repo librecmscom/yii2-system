@@ -71,4 +71,30 @@ class UrlRuleSearch extends UrlRule
 
         return $dataProvider;
     }
+
+    /**
+     * 下拉筛选
+     * @param string $column
+     * @param null|string $value
+     * @return bool|mixed
+     */
+    public static function dropDown($column, $value = null)
+    {
+        $dropDownList = [
+            "status" => [
+                UrlRule::STATUS_ACTIVE => Yii::t('system', 'Active'),
+                UrlRule::STATUS_PASSIVE => Yii::t('system', 'Disable'),
+            ],
+            "redirect_code" => [
+                "301" => "301",
+                "302" => "302",
+            ],
+        ];
+        //根据具体值显示对应的值
+        if ($value !== null) {
+            return array_key_exists($column, $dropDownList) ? $dropDownList[$column][$value] : false;
+        } else {//返回关联数组，用户下拉的filter实现
+            return array_key_exists($column, $dropDownList) ? $dropDownList[$column] : false;
+        }
+    }
 }

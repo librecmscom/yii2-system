@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yuncms\system\models\UrlRule;
+use yuncms\system\backend\models\UrlRuleSearch;
 use yuncms\admin\widgets\Jarvis;
 
 /* @var $this yii\web\View */
@@ -16,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <section id="widget-grid">
     <div class="row">
         <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 url-rule-index">
-            <?php Pjax::begin(); ?>                
+            <?php Pjax::begin(); ?>
             <?php Jarvis::begin([
                 'noPadding' => true,
                 'editbutton' => false,
@@ -43,15 +44,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     'route',
                     'params',
                     'redirect',
-                    'redirect_code',
+                    [
+                        'attribute' => 'redirect_code',
+                        "filter" => UrlRuleSearch::dropDown("redirect_code"),
+                    ],
                     [
                         'attribute' => 'status',
                         'value' => function ($model) {
-                            return $model->status == UrlRule::STATUS_ACTIVE ? Yii::t('system', 'Active') : Yii::t('system', 'Disable');
+                            return UrlRuleSearch::dropDown("status", $model->status);
                         },
-                        'label' => Yii::t('app', 'Status'),
+                        'label' => Yii::t('system', 'Status'),
+                        "filter" => UrlRuleSearch::dropDown("status"),
                     ],
-                    ['class' => 'yii\grid\ActionColumn','header' => Yii::t('app', 'Operation'),],
+                    ['class' => 'yii\grid\ActionColumn', 'header' => Yii::t('app', 'Operation'),],
                 ],
             ]); ?>
             <?php Jarvis::end(); ?>
