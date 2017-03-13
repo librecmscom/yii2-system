@@ -64,7 +64,7 @@ class ArrayBehavior extends Behavior
      */
     public function evaluateAttributes($event)
     {
-        if (in_array($event->name, $this->events)) {
+        if (in_array($event->name, $this->events())) {
             foreach ($this->attributes as $attribute) {
                 $this->owner->$attribute = $this->getValue($this->owner->$attribute, $event->name);
             }
