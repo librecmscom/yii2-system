@@ -73,7 +73,7 @@ if (!function_exists('key_extra')) {
                     foreach ($matches[0] as $match) {
                         $string .= $match;
                     }
-                    $so = scws_new();
+                    $so = \scws_new();
                     $so->set_charset('utf8');
                     $so->send_text($string);
                     $tmp = $so->get_tops($limit);
@@ -105,7 +105,7 @@ if (!function_exists('pullword')) {
                     foreach ($matches[0] as $match) {
                         $string .= $match;
                     }
-                    $so = scws_new();
+                    $so = \scws_new();
                     $so->set_charset('utf8');
                     $so->send_text($string);
                     $words = [];
