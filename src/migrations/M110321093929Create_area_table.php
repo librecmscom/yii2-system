@@ -4,7 +4,7 @@ namespace yuncms\system\migrations;
 
 use yii\db\Migration;
 
-class M170321093929Create_area_table extends Migration
+class M110321093929Create_area_table extends Migration
 {
     public function up()
     {

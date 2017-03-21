@@ -22,6 +22,22 @@ if (!function_exists('env')) {
     }
 }
 
+/**
+ * 获取SEO变量
+ * @param string $key
+ * @param null|string|int $default
+ * @return null|string|int
+ */
+if (!function_exists('seo')) {
+    function seo($key, $default = null)
+    {
+        $value = getenv($key);
+        if ($value === false) {
+            return $default;
+        }
+        return $value;
+    }
+}
 
 /**
  * 提取两个字符串之间的值，不包括分隔符

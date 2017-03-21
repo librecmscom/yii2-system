@@ -14,6 +14,7 @@ use yii\validators\ValidationAsset;
 
 /**
  * Class IdCardValidator
+ * [ 'mobile', 'yuncms\system\validators\IdCardValidator', 'message'=> '呀！身份证号码格式不正确，请重试！' ],
  * @package yuncms\system\validators
  */
 class IdCardValidator extends Validator

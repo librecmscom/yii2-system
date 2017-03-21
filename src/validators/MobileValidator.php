@@ -12,6 +12,11 @@ use yii\web\JsExpression;
 use yii\validators\Validator;
 use yii\validators\ValidationAsset;
 
+/**
+ * Class MobileValidator
+ * [ 'mobile', 'yuncms\system\validators\MobileValidator', 'message'=> '呀！手机号码格式不正确，请重试！' ],
+ * @package yuncms\system\validators
+ */
 class MobileValidator extends Validator
 {
     /**
