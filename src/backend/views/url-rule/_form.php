@@ -4,7 +4,7 @@ use yii\bootstrap\ActiveForm;
 use yuncms\system\models\UrlRule;
 
 /* @var \yii\web\View $this */
-/* @var common\models\UrlRule $model */
+/* @var yuncms\system\models\UrlRule $model */
 /* @var ActiveForm $form */
 ?>
 <?php $form = ActiveForm::begin([
