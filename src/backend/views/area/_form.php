@@ -31,7 +31,6 @@ $engine = new Bloodhound([
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'area_code')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'post_code')->textInput(['maxlength' => 128]) ?>
-    <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'parent_name')->widget(
         TypeAhead::className(),
         [
