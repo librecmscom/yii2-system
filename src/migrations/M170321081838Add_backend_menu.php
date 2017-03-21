@@ -35,6 +35,20 @@ class M170321081838Add_backend_menu extends Migration
             ['创建语言', $id, '/system/language/create', 0, NULL],
             ['更新语言', $id, '/system/language/update', 0, NULL],
         ]);
+
+        $this->insert('{{%admin_menu}}', [
+            'name' => '地区管理',
+            'parent' => 3,
+            'route' => '/system/area/index',
+            'icon' => 'fa-globe',
+            'sort' => NULL,
+            'data' => NULL
+        ]);
+        $id = (new \yii\db\Query())->select(['id'])->from('{{%admin_menu}}')->where(['name' => '地区管理', 'parent' => 3,])->scalar($this->getDb());
+        $this->batchInsert('{{%admin_menu}}', ['name', 'parent', 'route', 'visible', 'sort'], [
+            ['创建地区', $id, '/system/area/create', 0, NULL],
+            ['更新地区', $id, '/system/area/update', 0, NULL],
+        ]);
     }
 
     public function down()
@@ -43,6 +57,9 @@ class M170321081838Add_backend_menu extends Migration
         $this->delete('{{%admin_menu}}', ['parent' => $id]);
         $this->delete('{{%admin_menu}}', ['id' => $id]);
         $id = (new \yii\db\Query())->select(['id'])->from('{{%admin_menu}}')->where(['name' => '语言管理', 'parent' => 3])->scalar($this->getDb());
+        $this->delete('{{%admin_menu}}', ['parent' => $id]);
+        $this->delete('{{%admin_menu}}', ['id' => $id]);
+        $id = (new \yii\db\Query())->select(['id'])->from('{{%admin_menu}}')->where(['name' => '地区管理', 'parent' => 3])->scalar($this->getDb());
         $this->delete('{{%admin_menu}}', ['parent' => $id]);
         $this->delete('{{%admin_menu}}', ['id' => $id]);
     }

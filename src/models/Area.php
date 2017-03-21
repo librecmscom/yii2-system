@@ -37,7 +37,7 @@ class Area extends \yii\db\ActiveRecord
             [['parent_name'], 'filterParent'],
             [['parent_name'], 'in',
                 'range' => static::find()->select(['name'])->column(),
-                'message' => Yii::t('common/area', 'Area "{value}" not found.')],
+                'message' => Yii::t('system', 'Area "{value}" not found.')],
             [['parent', 'sort'], 'integer'],
             [['name'], 'string', 'max' => 128],
         ];
@@ -51,6 +51,8 @@ class Area extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('system', 'Area ID'),
             'name' => Yii::t('system', 'Area Name'),
+            'area_code' => Yii::t('system', 'Area Code'),
+            'post_code' => Yii::t('system', 'Post Code'),
             'parent' => Yii::t('system', 'Parent Area'),
             'parent_name' => Yii::t('system', 'Parent Area Name'),
             'sort' => Yii::t('system', 'Area Sort'),
