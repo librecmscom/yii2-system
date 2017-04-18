@@ -20,15 +20,6 @@ class StringHelperTest extends TestCase
         parent::tearDown();
     }
 
-    public function testStrlen()
-    {
-
-        $a = StringHelper::strlen('abcdefg');
-        $this->assertEquals(7, $a);
-        $b = StringHelper::strlen('我是中国人');
-        $this->assertEquals(15, $b);
-    }
-
     public function testSubstr()
     {
         $a = StringHelper::substr('abcdefg', 0, 3);
