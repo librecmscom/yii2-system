@@ -15,7 +15,8 @@ use yii\validators\ValidationAsset;
 
 /**
  * Class QqValidator
- * @package common\validators
+ * [ 'qq', 'yuncms\system\validators\QqValidator', 'message'=> '亲，这个QQ号看起来不对呀！' ],
+ * @package yuncms\system\validators
  */
 class QqValidator extends Validator
 {

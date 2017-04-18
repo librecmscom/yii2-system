@@ -33,7 +33,7 @@ class Bootstrap implements BootstrapInterface
 
             } elseif ($module instanceof Module) {//前台判断放最后
                 $app->urlManager->addRules([
-                    'system/page' => 'system/page/view',
+                    'page' => 'system/page/view',
                 ]);
                 //注册Url管理
                 $app->urlManager->addRules([
