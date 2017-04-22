@@ -1,39 +1,46 @@
 <?php
 
 use yii\helpers\Html;
-use yuncms\admin\widgets\Jarvis;
+use xutl\inspinia\Box;
+use xutl\inspinia\Toolbar;
+use xutl\inspinia\Alert;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Page */
+/* @var $model yuncms\system\models\Page */
 
 $this->title = Yii::t('system', 'Update Page') . ': ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('system', 'Manage Page'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
-<section id="widget-grid">
+<div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 page-update">
-            <?php Jarvis::begin([
-                'editbutton' => false,
-                'deletebutton' => false,
+        <div class="col-lg-12 page-update">
+            <?= Alert::widget() ?>
+            <?php Box::begin([
                 'header' => Html::encode($this->title),
-                'bodyToolbarActions' => [
-                    [
-                        'label' => Yii::t('system', 'Manage Page'),
-                        'url' => ['index'],
-                    ],
-                    [
-                        'label' => Yii::t('system', 'Create Page'),
-                        'url' => ['create'],
-                    ],
-                ]
             ]); ?>
+            <div class="row">
+                <div class="col-sm-4 m-b-xs">
+                    <?= Toolbar::widget(['items' => [
+                        [
+                            'label' => Yii::t('system', 'Manage Page'),
+                            'url' => ['index'],
+                        ],
+                        [
+                            'label' => Yii::t('system', 'Create Page'),
+                            'url' => ['create'],
+                        ],
+                    ]]); ?>
+                </div>
+                <div class="col-sm-8 m-b-xs">
 
+                </div>
+            </div>
             <?= $this->render('_form', [
                 'model' => $model,
             ]) ?>
-            <?php Jarvis::end(); ?>
-        </article>
+            <?php Box::end(); ?>
+        </div>
     </div>
-</section>
+</div>

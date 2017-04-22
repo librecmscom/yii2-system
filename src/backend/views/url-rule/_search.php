@@ -1,29 +1,50 @@
 <?php
 
 use yuncms\admin\helpers\Html;
-use yuncms\admin\widgets\ActiveForm;
+use xutl\inspinia\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\UrlRuleSearch */
-/* @var $form backend\widgets\ActiveForm */
+/* @var $model yuncms\system\backend\models\UrlRuleSearch */
+/* @var $form ActiveForm */
 ?>
 
-<div class="url-rule-search">
+<div class="url-rule-search  pull-right">
 
     <?php $form = ActiveForm::begin([
+        'layout' => 'inline',
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'id', [
+        'inputOptions' => [
+            'placeholder' => $model->getAttributeLabel('id'),
+        ],
+    ]) ?>
 
-    <?= $form->field($model, 'slug') ?>
+    <?= $form->field($model, 'slug', [
+        'inputOptions' => [
+            'placeholder' => $model->getAttributeLabel('slug'),
+        ],
+    ]) ?>
 
-    <?= $form->field($model, 'route') ?>
+    <?= $form->field($model, 'route', [
+        'inputOptions' => [
+            'placeholder' => $model->getAttributeLabel('route'),
+        ],
+    ]) ?>
 
-    <?= $form->field($model, 'params') ?>
-
-    <?= $form->field($model, 'redirect') ?>
+<!--    --><?//= $form->field($model, 'params', [
+//        'inputOptions' => [
+//            'placeholder' => $model->getAttributeLabel('params'),
+//        ],
+//    ]) ?>
+<!---->
+<!--    --><?//= $form->field($model, 'redirect', [
+//        'inputOptions' => [
+//            'placeholder' => $model->getAttributeLabel('redirect'),
+//        ],
+//    ]) ?>
 
     <?php // echo $form->field($model, 'redirect_code') ?>
 

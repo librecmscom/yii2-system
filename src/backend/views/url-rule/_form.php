@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use xutl\inspinia\ActiveForm;
 use yuncms\system\models\UrlRule;
 
 /* @var \yii\web\View $this */
@@ -12,26 +12,27 @@ use yuncms\system\models\UrlRule;
     'enableAjaxValidation' => true,
     'enableClientValidation' => false,
 ]); ?>
-<fieldset>
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'route')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+<div class="hr-line-dashed"></div>
+<?= $form->field($model, 'route')->textInput(['maxlength' => true]) ?>
+<div class="hr-line-dashed"></div>
+<?= $form->field($model, 'params')->textInput(['maxlength' => true]) ?>
+<div class="hr-line-dashed"></div>
+<?= $form->field($model, 'redirect')->inline(true)->radioList(['0' => Yii::t('app', 'No'), '1' => Yii::t('app', 'Yes')]) ?>
+<div class="hr-line-dashed"></div>
+<?= $form->field($model, 'redirect_code')->inline(true)->radioList(['301' => '301', '302' => '302']) ?>
+<div class="hr-line-dashed"></div>
+<?= $form->field($model, 'status')->inline(true)->radioList([UrlRule::STATUS_ACTIVE => Yii::t('app', 'Enable'), UrlRule::STATUS_PASSIVE => Yii::t('app', 'Disable')]) ?>
+<div class="hr-line-dashed"></div>
 
-    <?= $form->field($model, 'params')->textInput(['maxlength' => true]) ?>
+<div class="form-group">
+    <div class="col-sm-4 col-sm-offset-2">
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 
-    <?= $form->field($model, 'redirect')->inline(true)->radioList(['0' => Yii::t('app', 'No'), '1' => Yii::t('app', 'Yes')]) ?>
-
-    <?= $form->field($model, 'redirect_code')->inline(true)->radioList(['301' => '301', '302' => '302']) ?>
-
-    <?= $form->field($model, 'status')->inline(true)->radioList([UrlRule::STATUS_ACTIVE => Yii::t('app', 'Enable'), UrlRule::STATUS_PASSIVE => Yii::t('app', 'Disable')]) ?>
-</fieldset>
-<div class="form-actions">
-    <div class="row">
-        <div class="col-md-12">
-            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        </div>
     </div>
 </div>
+
 
 <?php ActiveForm::end(); ?>
 

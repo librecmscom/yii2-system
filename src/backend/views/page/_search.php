@@ -1,29 +1,50 @@
 <?php
 
 use yii\helpers\Html;
-use yuncms\admin\widgets\ActiveForm;
+use xutl\inspinia\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model yuncms\system\models\PageSearch */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $form ActiveForm */
 ?>
 
-<div class="page-search">
+<div class="page-search pull-right">
 
     <?php $form = ActiveForm::begin([
+        'layout' => 'inline',
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'id', [
+        'inputOptions' => [
+            'placeholder' => $model->getAttributeLabel('id'),
+        ],
+    ]) ?>
 
-    <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'title', [
+        'inputOptions' => [
+            'placeholder' => $model->getAttributeLabel('title'),
+        ],
+    ]) ?>
 
-    <?= $form->field($model, 'keywords') ?>
+<!--    --><?//= $form->field($model, 'keywords', [
+//        'inputOptions' => [
+//            'placeholder' => $model->getAttributeLabel('id'),
+//        ],
+//    ]) ?>
+<!---->
+<!--    --><?//= $form->field($model, 'description', [
+//        'inputOptions' => [
+//            'placeholder' => $model->getAttributeLabel('id'),
+//        ],
+//    ]) ?>
 
-    <?= $form->field($model, 'description') ?>
-
-    <?= $form->field($model, 'route') ?>
+    <?= $form->field($model, 'route', [
+        'inputOptions' => [
+            'placeholder' => $model->getAttributeLabel('route'),
+        ],
+    ]) ?>
 
     <?php // echo $form->field($model, 'content') ?>
 

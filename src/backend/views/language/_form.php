@@ -1,10 +1,10 @@
 <?php
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use xutl\inspinia\ActiveForm;
 use yuncms\system\models\UrlRule;
 
 /* @var \yii\web\View $this */
-/* @var common\models\UrlRule $model */
+/* @var yuncms\system\models\UrlRule $model */
 /* @var ActiveForm $form */
 ?>
 <?php $form = ActiveForm::begin([
@@ -12,21 +12,20 @@ use yuncms\system\models\UrlRule;
     'enableAjaxValidation' => true,
     'enableClientValidation' => false,
 ]); ?>
-<fieldset>
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'iso_639_1')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+<div class="hr-line-dashed"></div>
+<?= $form->field($model, 'iso_639_1')->textInput(['maxlength' => true]) ?>
+<div class="hr-line-dashed"></div>
+<?= $form->field($model, 'iso_639_2')->textInput(['maxlength' => true]) ?>
+<div class="hr-line-dashed"></div>
+<?= $form->field($model, 'iso_639_3')->textInput(['maxlength' => true]) ?>
+<div class="hr-line-dashed"></div>
 
-    <?= $form->field($model, 'iso_639_2')->textInput(['maxlength' => true]) ?>
+<div class="form-group">
+    <div class="col-sm-4 col-sm-offset-2">
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 
-    <?= $form->field($model, 'iso_639_3')->textInput(['maxlength' => true]) ?>
-
-   </fieldset>
-<div class="form-actions">
-    <div class="row">
-        <div class="col-md-12">
-            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        </div>
     </div>
 </div>
 
