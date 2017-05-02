@@ -17,7 +17,7 @@ use yii\web\NotFoundHttpException;
 use yuncms\system\models\Category;
 
 /**
- * CategoryController implements the CRUD actions for Page model.
+ * CategoryController implements the CRUD actions for Category model.
  */
 class CategoryController extends Controller
 {
@@ -30,12 +30,11 @@ class CategoryController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'delete' => ['POST'],
                 ],
             ],
         ];
     }
-
 
     public function actions()
     {
@@ -48,7 +47,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Lists all Menu models.
+     * Lists all Category models.
      * @return mixed
      */
     public function actionIndex()
@@ -58,14 +57,13 @@ class CategoryController extends Controller
             'query' => $query,
             'pagination' => false
         ]);
-
         return $this->render('index', [
-            'dataProvider' => $dataProvider
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Menu model.
+     * Displays a single Category model.
      * @param integer $id
      * @return mixed
      */
@@ -77,14 +75,14 @@ class CategoryController extends Controller
     }
 
     /**
-     * Creates a new Menu model.
+     * Creates a new Category model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @param int|null $parent 父菜单ID
      * @return mixed
      */
     public function actionCreate($parent = null)
     {
-        $model = new Category;
+        $model = new Category();
         if (!is_null($parent)) {
             $parent = Category::findOne(['id' => $parent]);
             if ($parent) {
@@ -107,7 +105,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Updates an existing Menu model.
+     * Updates an existing Category model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -158,7 +156,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Finds the Menu model based on its primary key value.
+     * Finds the Category model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
      * @return Category the loaded model
@@ -169,7 +167,7 @@ class CategoryController extends Controller
         if (($model = Category::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+            throw new NotFoundHttpException (Yii::t('app', 'The requested page does not exist.'));
         }
     }
 }

@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'label' => Yii::t('system', 'Update Category'),
                             'url' => ['/system/category/update', 'id' => $model->id],
+                            'options' => ['class' => 'btn btn-primary btn-sm']
                         ],
                         [
                             'label' => Yii::t('system', 'Delete Category'),

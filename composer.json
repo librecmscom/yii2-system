@@ -10,6 +10,7 @@
   "license": "BSD-3-Clause",
   "require": {
     "yiisoft/yii2": "~2.0",
+    "yii2tech/ar-position": "~1.0",
     "creocoder/yii2-flysystem": "0.8.*",
     "xutl/yii2-ueditor-widget": "~1.0"
   },

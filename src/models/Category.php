@@ -10,6 +10,7 @@ use Yii;
 use yii\db\Query;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 use Overtrue\Pinyin\Pinyin;
 
 /**
@@ -70,7 +71,7 @@ class Category extends ActiveRecord
                 return !$this->isNewRecord;
             }],
             [['sort', 'frequency'], 'integer'],
-            ['sort', 'default', 'value' => 0]
+            [['sort', 'frequency'], 'default', 'value' => 0]
         ];
     }
 
