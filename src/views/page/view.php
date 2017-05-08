@@ -11,7 +11,11 @@ $this->registerMetaTag(['name' => 'description', 'content' => !empty($model->des
 <div class="row">
     <div class="col-xs-12 col-md-9 main">
         <div class="widget-question widget-article">
-            <h3 class="title"><?= Html::encode($model->title); ?></h3>
+            <div class="page-header">
+                <h1>
+                    <?= Html::encode($this->title); ?>
+                </h1>
+            </div>
             <div class="content mt-10">
                 <div class="quote mb-20">
                     <?= $model->description; ?>
