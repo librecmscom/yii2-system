@@ -12,6 +12,7 @@ use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
 use Overtrue\Pinyin\Pinyin;
+use yii2tech\ar\position\PositionBehavior;
 
 /**
  * Class Category
@@ -40,6 +41,13 @@ class Category extends ActiveRecord
     {
         return [
             TimestampBehavior::className(),
+            'positionBehavior' => [
+                'class' => PositionBehavior::className(),
+                'positionAttribute' => 'sort',
+                'groupAttributes' => [
+                    'parent' // multiple lists varying by 'parent'
+                ],
+            ],
         ];
     }
 
