@@ -12,6 +12,7 @@
     "yiisoft/yii2": "~2.0",
     "yii2tech/ar-position": "~1.0",
     "creocoder/yii2-flysystem": "0.8.*",
+    "2amigos/yii2-qrcode-helper": "~1.0",
     "xutl/yii2-ueditor-widget": "~1.0"
   },
   "autoload": {
