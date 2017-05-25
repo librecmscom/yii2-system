@@ -10,7 +10,6 @@ namespace yuncms\system\controllers;
 use Yii;
 use yii\web\Response;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use dosamigos\qrcode\formats\MailTo;
 use dosamigos\qrcode\formats\MailMessage;
 use dosamigos\qrcode\formats\Bitcoin;
@@ -20,6 +19,7 @@ use dosamigos\qrcode\formats\MeCard;
 use dosamigos\qrcode\formats\Mms;
 use dosamigos\qrcode\formats\Phone;
 use dosamigos\qrcode\formats\Sms;
+use dosamigos\qrcode\formats\Wifi;
 use dosamigos\qrcode\formats\vCard;
 use dosamigos\qrcode\formats\Youtube;
 use dosamigos\qrcode\QrCode;
@@ -65,6 +65,28 @@ class QrcodeController extends Controller
     public function actionUrl($url)
     {
         return QrCode::png($url, false, $this->level, $this->size, $this->margin);
+    }
+
+    /**
+     * wifi二维码
+     * @param string $authentication the authentication type. e.g., WPA
+     * @param string $ssid
+     * @param string $password
+     * @param string $hidden hidden SSID (optional; equals false if omitted): either true or false
+     */
+    public function actionWifi($authentication, $ssid, $password, $hidden = 'false')
+    {
+        $wifi = new Wifi(['authentication' => $authentication, 'ssid' => $ssid, 'password' => $password, 'hidden' => $hidden]);
+        return QrCode::png($wifi->getText(), false, $this->level, $this->size, $this->margin);
+    }
+
+    /**
+     * @param string $title
+     */
+    public function actionBookMark($title)
+    {
+        $bookMark = new BookMark(['title' => $title]);
+        return QrCode::png($bookMark->getText(), false, $this->level, $this->size, $this->margin);
     }
 
     /**
