@@ -55,7 +55,7 @@ class QrcodeController extends Controller
         parent::init();
         Yii::$app->response->format = Response::FORMAT_RAW;
         $this->level = Yii::$app->request->get('level', Enum::QR_ECLEVEL_H);
-        $this->size = Yii::$app->request->get('size', 7);
+        $this->size = Yii::$app->request->get('size', 5);
         $this->margin = Yii::$app->request->get('margin', 1);
     }
 
