@@ -5,7 +5,7 @@
  * @license http://www.tintsoft.com/license/
  */
 
-namespace yuncms\system\controllers;
+namespace yuncms\system\frontend\controllers;
 
 use Yii;
 use yii\web\Response;
