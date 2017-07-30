@@ -9,7 +9,7 @@
   "type": "yii2-extension",
   "license": "MIT",
   "require": {
-    "yiisoft/yii2": "~2.0",
+    "yiisoft/yii2": "~2.0.6",
     "yii2tech/ar-position": "~1.0",
     "2amigos/yii2-qrcode-helper": "~1.0",
     "xutl/yii2-ueditor-widget": "~1.0"
