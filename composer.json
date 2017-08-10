@@ -14,6 +14,9 @@
     "2amigos/yii2-qrcode-helper": "~1.0",
     "xutl/yii2-ueditor-widget": "~1.0"
   },
+  "require-dev": {
+    "phpunit/PHPUnit": "~6.0"
+  },
   "autoload": {
     "files": [
       "src/helpers.php"
