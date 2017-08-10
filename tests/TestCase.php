@@ -31,6 +31,10 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         new $appClass(ArrayHelper::merge([
             'id' => 'testapp',
             'basePath' => __DIR__,
+            'aliases' => [
+                '@bower' => '@vendor/bower-asset',
+                '@npm'   => '@vendor/npm-asset',
+            ],
             'vendorPath' => $this->getVendorPath(),
         ], $config));
     }
@@ -41,6 +45,10 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
             'id' => 'testapp',
             'basePath' => __DIR__,
             'vendorPath' => $this->getVendorPath(),
+            'aliases' => [
+                '@bower' => '@vendor/bower-asset',
+                '@npm'   => '@vendor/npm-asset',
+            ],
             'components' => [
                 'request' => [
                     'cookieValidationKey' => 'wefJDF8sfdsfSDefwqdxj9oq',
