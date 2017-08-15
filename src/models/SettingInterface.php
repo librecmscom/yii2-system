@@ -3,7 +3,7 @@ namespace yuncms\system\models;
 
 /**
  * Interface SettingInterface
- * @package yuncms\settings\models
+ * @package yuncms\system\models
  *
  * @author Aris Karageorgos <aris@phe.me>
  */

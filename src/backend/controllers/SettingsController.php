@@ -8,7 +8,8 @@ use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yuncms\system\models\Setting;
 use yuncms\system\backend\models\SettingSearch;
-use pheme\grid\actions\ToggleAction;
+
+//use pheme\grid\actions\ToggleAction;
 
 /**
  * SettingsController implements the CRUD actions for Setting model.
@@ -33,16 +34,16 @@ class SettingsController extends Controller
         ];
     }
 
-    public function actions()
-    {
-        return [
-            'toggle' => [
-                'class' => ToggleAction::className(),
-                'modelClass' => 'yuncms\system\models\Setting',
-                //'setFlash' => true,
-            ]
-        ];
-    }
+//    public function actions()
+//    {
+//        return [
+//            'toggle' => [
+//                'class' => ToggleAction::className(),
+//                'modelClass' => 'yuncms\system\models\Setting',
+//                //'setFlash' => true,
+//            ]
+//        ];
+//    }
 
     /**
      * Lists all Settings.
@@ -53,13 +54,10 @@ class SettingsController extends Controller
         $searchModel = new SettingSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render(
-            'index',
-            [
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
-            ]
-        );
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
@@ -69,12 +67,9 @@ class SettingsController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render(
-            'view',
-            [
-                'model' => $this->findModel($id),
-            ]
-        );
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
     }
 
     /**
@@ -89,9 +84,7 @@ class SettingsController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render(
-                'create',
-                [
+            return $this->render('create', [
                     'model' => $model,
                 ]
             );
@@ -107,13 +100,10 @@ class SettingsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render(
-                'update',
-                [
+            return $this->render('update', [
                     'model' => $model,
                 ]
             );
