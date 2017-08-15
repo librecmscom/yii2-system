@@ -4,6 +4,7 @@
  * @copyright Copyright (c) 2012 TintSoft Technology Co. Ltd.
  * @license http://www.tintsoft.com/license/
  */
+
 namespace yuncms\system;
 
 use Yii;
@@ -43,6 +44,10 @@ class Bootstrap implements BootstrapInterface
                 ], true);
             }
         }
+//        $app->set('settings', [
+//            'class' => 'yuncms\system\components\Settings',
+//        ]);
+
         /**
          * 注册语言包
          */
@@ -53,7 +58,5 @@ class Bootstrap implements BootstrapInterface
                 'basePath' => __DIR__ . '/messages',
             ];
         }
-
-
     }
 }

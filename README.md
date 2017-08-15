@@ -23,6 +23,17 @@ to the `require` section of your `composer.json` file.
 
 集成一些常用的方法和类
 
+Add this to your main configuration's components array
+
+```php
+'components' => [
+    'settings' => [
+        'class' => 'yuncms\system\components\Settings'
+    ],
+    ...
+]
+```
+
 ## License
 
 this is released under the MIT License. See the bundled [LICENSE.md](LICENSE.md)
