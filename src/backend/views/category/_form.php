@@ -58,7 +58,7 @@ $engine = new Bloodhound([
 <div class="hr-line-dashed"></div>
 <?= $form->field($model, 'frequency')->input('number') ?>
 <div class="hr-line-dashed"></div>
-<?= $form->field($model, 'allow_publish')->inline(true)->radioList(['1' => Yii::t('app', 'Yes'), '0' => Yii::t('app', 'No')]) ?>
+<?= $form->field($model, 'allow_publish')->inline(true)->radioList(['1' => Yii::t('yii', 'Yes'), '0' => Yii::t('yii', 'No')]) ?>
 <div class="hr-line-dashed"></div>
 <?= $form->field($model, 'sort')->input('number') ?>
 <div class="hr-line-dashed"></div>

@@ -130,10 +130,11 @@ class Settings extends Component
     }
 
     /**
-     * @param $key
-     * @param $value
-     * @param null $section
-     * @param null $type
+     * 设置
+     * @param string $key
+     * @param mixed $value
+     * @param null|string $section
+     * @param null|string $type
      * @return boolean
      */
     public function set($key, $value, $section = null, $type = null)
@@ -153,10 +154,10 @@ class Settings extends Component
     /**
      * Returns the specified key or sets the key with the supplied (default) value
      *
-     * @param $key
-     * @param $value
-     * @param null $section
-     * @param null $type
+     * @param string$key
+     * @param mixed $value
+     * @param null|string $section
+     * @param null|string $type
      *
      * @return bool|mixed
      */

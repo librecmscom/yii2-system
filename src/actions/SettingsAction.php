@@ -1,4 +1,5 @@
 <?php
+
 namespace yuncms\system\actions;
 
 use Yii;
@@ -40,16 +41,15 @@ class SettingsAction extends Action
         }
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             foreach ($model->toArray() as $key => $value) {
-                Yii::$app->settings->set($key, $value, $model->formName());
+                //Yii::$app->settings->set($key, $value, $this->controller->module->id, $model->types[$key]);
+                Yii::$app->settings->set($key, $value, $model->formName(), $model->types[$key]);
             }
-            Yii::$app->getSession()->addFlash('success',
-                Yii::t('system', 'Successfully saved settings on {section}',
-                    ['section' => $model->formName()]
-                )
-            );
+            Yii::$app->getSession()->addFlash('success', Yii::t('system', 'Successfully saved settings.'));
+            return $this->controller->redirect([$this->controller->action->id]);
         }
         foreach ($model->attributes() as $key) {
             $model->{$key} = Yii::$app->settings->get($key, $model->formName());
+            //$model->{$key} = Yii::$app->settings->get($key, $this->controller->module->id);//直接使用模块ID
         }
         return $this->controller->render($this->viewName, ['model' => $model]);
     }
