@@ -8,8 +8,8 @@
 namespace yuncms\system\models;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * 点击计数器
