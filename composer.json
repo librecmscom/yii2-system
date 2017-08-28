@@ -27,7 +27,10 @@
     }
   },
   "extra": {
-    "bootstrap": "yuncms\\system\\Bootstrap"
+    "bootstrap": "yuncms\\system\\Bootstrap",
+    "branch-alias": {
+      "dev-master": "2.0-dev"
+    }
   },
   "repositories": [
     {
