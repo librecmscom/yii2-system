@@ -10,21 +10,19 @@ namespace yuncms\system\frontend\controllers;
 use Yii;
 use yii\web\Response;
 use yii\web\Controller;
-use dosamigos\qrcode\formats\MailTo;
-use dosamigos\qrcode\formats\MailMessage;
-use dosamigos\qrcode\formats\Bitcoin;
-use dosamigos\qrcode\formats\Geo;
-use dosamigos\qrcode\formats\iCal;
-use dosamigos\qrcode\formats\MeCard;
-use dosamigos\qrcode\formats\Mms;
-use dosamigos\qrcode\formats\Phone;
-use dosamigos\qrcode\formats\Sms;
-use dosamigos\qrcode\formats\Wifi;
-use dosamigos\qrcode\formats\vCard;
-use dosamigos\qrcode\formats\Youtube;
-use dosamigos\qrcode\QrCode;
-use dosamigos\qrcode\lib\Enum;
-
+use Da\QrCode\QrCode;
+use Da\QrCode\Format\GeoFormat;
+use Da\QrCode\Format\iCalFormat;
+use Da\QrCode\Format\BookmarkFormat;
+use Da\QrCode\Format\MailMessageFormat;
+use Da\QrCode\Format\MailtoFormat;
+use Da\QrCode\Format\MeCardFormat;
+use Da\QrCode\Format\MmsFormat;
+use Da\QrCode\Format\PhoneFormat;
+use Da\QrCode\Format\SmsFormat;
+use Da\QrCode\Format\vCardFormat;
+use Da\QrCode\Format\WifiFormat;
+use Da\QrCode\Format\YoutubeFormat;
 
 /**
  * Class QrcodeController
@@ -76,7 +74,12 @@ class QrcodeController extends Controller
      */
     public function actionWifi($authentication, $ssid, $password, $hidden = 'false')
     {
-        $wifi = new Wifi(['authentication' => $authentication, 'ssid' => $ssid, 'password' => $password, 'hidden' => $hidden]);
+        $format = new Wifi(['authentication' => $authentication, 'ssid' => $ssid, 'password' => $password, 'hidden' => $hidden]);
+        $qrCode = new QrCode($format);
+        header('Content-Type: ' . $qrCode->getContentType());
+
+        echo $qrCode->writeString();
+
         return QrCode::png($wifi->getText(), false, $this->level, $this->size, $this->margin);
     }
 

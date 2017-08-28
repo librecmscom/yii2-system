@@ -11,7 +11,7 @@
   "require": {
     "yiisoft/yii2": "~2.0.6",
     "yii2tech/ar-position": "~1.0",
-    "2amigos/yii2-qrcode-helper": "~1.0",
+    "2amigos/qrcode-library": "~1.1",
     "xutl/yii2-ueditor-widget": "~1.0",
     "pheme/yii2-toggle-column": "*"
   },
