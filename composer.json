@@ -12,7 +12,6 @@
     "yiisoft/yii2": "~2.0.6",
     "yiisoft/yii2-queue": "~2.0.0",
     "yii2tech/ar-position": "~1.0",
-    "2amigos/qrcode-library": "~1.1",
     "xutl/yii2-ueditor-widget": "~1.0",
     "pheme/yii2-toggle-column": "*"
   },
