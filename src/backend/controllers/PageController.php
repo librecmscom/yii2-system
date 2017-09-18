@@ -31,6 +31,16 @@ class PageController extends Controller
         ];
     }
 
+    public function actions()
+    {
+        return [
+            'upload' => [
+                'class' => 'yuncms\ueditor\UEditorAction',
+                //etc...
+            ],
+        ];
+    }
+
     /**
      * Lists all Page models.
      * @return mixed
@@ -71,7 +81,7 @@ class PageController extends Controller
             return ActiveForm::validate($model);
         }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->getSession()->setFlash('success', Yii::t('app','Create success.'));
+            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Create success.'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -91,7 +101,7 @@ class PageController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->getSession()->setFlash('success', Yii::t('app','Update success.'));
+            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Update success.'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -109,7 +119,7 @@ class PageController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        Yii::$app->getSession()->setFlash('success', Yii::t('app','Delete success.'));
+        Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Delete success.'));
         return $this->redirect(['index']);
     }
 

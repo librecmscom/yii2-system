@@ -2,7 +2,7 @@
 use xutl\inspinia\ActiveForm;
 use yii\helpers\Html;
 use yuncms\system\models\Page;
-use xutl\ueditor\UEditor;
+use yuncms\ueditor\UEditor;
 
 /* @var \yii\web\View $this */
 /* @var yuncms\system\models\Page $model */
