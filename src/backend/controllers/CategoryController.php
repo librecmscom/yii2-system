@@ -95,7 +95,7 @@ class CategoryController extends Controller
             return ActiveForm::validate($model);
         }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Create success.'));
+            Yii::$app->getSession()->setFlash('success', Yii::t('system', 'Create success.'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -121,7 +121,7 @@ class CategoryController extends Controller
             return ActiveForm::validate($model);
         }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Update success.'));
+            Yii::$app->getSession()->setFlash('success', Yii::t('system', 'Update success.'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -139,7 +139,7 @@ class CategoryController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Delete success.'));
+        Yii::$app->getSession()->setFlash('success', Yii::t('system', 'Delete success.'));
         return $this->redirect(['index']);
     }
 
@@ -167,7 +167,7 @@ class CategoryController extends Controller
         if (($model = Category::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException (Yii::t('app', 'The requested page does not exist.'));
+            throw new NotFoundHttpException (Yii::t('system', 'The requested page does not exist.'));
         }
     }
 }

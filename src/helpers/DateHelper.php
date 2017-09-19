@@ -60,7 +60,7 @@ class DateHelper
     {
         $week = $week ? $week : date('w');
         $weekArr = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        return Yii::t('app', $weekArr [$week]);
+        return Yii::t('system', $weekArr [$week]);
     }
 
     /**

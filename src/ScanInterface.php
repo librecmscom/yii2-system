@@ -11,7 +11,7 @@ namespace yuncms\system;
  * 机器审核接口
  * @package yuncms\system
  */
-interface GreenInterface
+interface ScanInterface
 {
 
     /**

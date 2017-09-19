@@ -11,7 +11,7 @@ use Yii;
 use yii\base\Object;
 use yii\queue\Queue;
 use yii\queue\RetryableJob;
-use yuncms\system\GreenInterface;
+use yuncms\system\ScanInterface;
 
 /**
  * Class GreenJob.
@@ -45,7 +45,7 @@ class ScanTextJob extends Object implements RetryableJob
      */
     public function execute($queue)
     {
-        if ($this->modelClass instanceof GreenInterface) {
+        if ($this->modelClass instanceof ScanInterface) {
             /** @var \yii\db\ActiveRecord $modelClass */
             $modelClass = $this->modelClass;
             if (($review = $modelClass::findReview($this->modelId)) != null) {
