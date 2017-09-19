@@ -5,7 +5,7 @@
  * @license http://www.tintsoft.com/license/
  */
 
-namespace yuncms\jobs;
+namespace yuncms\system\jobs;
 
 use Yii;
 use yii\base\Object;
