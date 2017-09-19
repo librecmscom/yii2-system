@@ -20,11 +20,10 @@
   },
   "autoload": {
     "files": [
-      "helpers.php"
+      "src/helpers.php"
     ],
     "psr-4": {
-      "yuncms\\system\\": "src",
-      "yuncms\\migrations\\": "migrations"
+      "yuncms\\system\\": "src"
     }
   },
   "extra": {
