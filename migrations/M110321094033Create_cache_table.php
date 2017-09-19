@@ -1,10 +1,10 @@
 <?php
 
-namespace yuncms\system\migrations;
+namespace yuncms\migrations;
 
 use yii\db\Migration;
 
-class M110321093929Create_area_table extends Migration
+class M110321094033Create_cache_table extends Migration
 {
     public function up()
     {
@@ -14,20 +14,16 @@ class M110321093929Create_area_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%area}}', [
-            'id' => $this->primaryKey(),
-            'name' => $this->string(128)->notNull(),
-            'area_code' => $this->string(5),
-            'post_code' => $this->string(7),
-            'parent' => $this->integer(),
-            'sort' => $this->smallInteger()->defaultValue(0)
+        $this->createTable('{{%cache}}', [
+            'id' => $this->string(50)->notNull()->unique(),
+            'expire' => $this->integer(),
+            'data' => 'LONGBLOB'
         ], $tableOptions);
-        $this->addForeignKey('{{%area_ibfk_1}}', '{{%area}}', 'parent', '{{%area}}', 'id', 'SET NULL', 'CASCADE');
     }
 
     public function down()
     {
-        $this->dropTable('{{%area}}');
+        $this->dropTable('{{%cache}}');
     }
 
     /*

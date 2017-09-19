@@ -1,10 +1,10 @@
 <?php
 
-namespace yuncms\system\migrations;
+namespace yuncms\migrations;
 
 use yii\db\Migration;
 
-class M170213072546Create_url_rule_table extends Migration
+class M170213085439Create_type_table extends Migration
 {
     public function up()
     {
@@ -13,21 +13,18 @@ class M170213072546Create_url_rule_table extends Migration
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
-
-        $this->createTable('{{%url_rule}}', [
+        $this->createTable('{{%type}}', [
             'id' => $this->primaryKey(),
-            'slug' => $this->string()->notNull(),
-            'route' => $this->string()->notNull(),
-            'params' => $this->string(),
-            'redirect' => $this->boolean()->defaultValue(false),
-            'redirect_code' => $this->integer(3)->defaultValue(302),
-            'status' => $this->boolean()->defaultValue(true),
-        ], $tableOptions);
+            'name' => $this->string()->notNull(),
+            'parent' => $this->integer(),
+            'module' => $this->string(),
+        ],$tableOptions);
+        $this->addForeignKey('{{%type_ibfk_1}}', '{{%type}}', 'parent', '{{%type}}', 'id', 'SET NULL', 'CASCADE');
     }
 
     public function down()
     {
-        $this->dropTable('{{%url_rule}}');
+        $this->dropTable('{{%type}}');
     }
 
     /*
