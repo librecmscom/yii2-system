@@ -24,6 +24,7 @@
     ],
     "psr-4": {
       "yuncms\\system\\": "src",
+      "yuncms\\jobs\\": "jobs",
       "yuncms\\migrations\\": "migrations"
     }
   },
