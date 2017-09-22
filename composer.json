@@ -27,6 +27,20 @@
     }
   },
   "extra": {
+    "yuncms": {
+      "name": "admin",
+      "i18n": {
+        "class":"yii\\i18n\\PhpMessageSource",
+        "basePath":"@yuncms/system/message"
+      },
+      "migrationNamespace": "@yuncms/system/migrations",
+      "backend": {
+        "class": "yuncms\\system\\backend\\Module"
+      },
+      "frontend": {
+        "class": "yuncms\\system\\frontend\\Module"
+      }
+    },
     "bootstrap": "yuncms\\system\\Bootstrap",
     "branch-alias": {
       "dev-master": "2.0-dev"
