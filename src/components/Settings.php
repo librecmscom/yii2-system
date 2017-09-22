@@ -46,7 +46,7 @@ class Settings extends Component
      *
      * @var string cache key
      */
-    public $cacheKey = 'yuncms/settings';
+    public $cacheKey = 'yuncms.settings';
 
     /**
      * Holds a cached copy of the data for the current request
