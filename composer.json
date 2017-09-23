@@ -32,6 +32,7 @@
       "name": "system",
       "i18n": {
         "class": "yii\\i18n\\PhpMessageSource",
+        "sourceLanguage": "en-US",
         "basePath": "@yuncms/system/message"
       },
       "migrationNamespace": "yuncms\\system\\migrations",
