@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = Yii::t('system', 'Update');
                 <div class="col-sm-4 m-b-xs">
                     <?= Toolbar::widget(['items' => [
                         [
-                            'label' => Yii::t('live', 'Manage Settings'),
+                            'label' => Yii::t('system', 'Manage Settings'),
                             'url' => ['index'],
                         ],
                     ]]); ?>

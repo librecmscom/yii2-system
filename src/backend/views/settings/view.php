@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'options' => [
                                 'class' => 'btn btn-danger btn-sm',
                                 'data' => [
-                                    'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                                    'confirm' => Yii::t('system', 'Are you sure you want to delete this item?'),
                                     'method' => 'post',
                                 ],
                             ]
