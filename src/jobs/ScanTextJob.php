@@ -48,13 +48,13 @@ class ScanTextJob extends Object implements RetryableJob
         if ($this->modelClass instanceof ScanInterface) {
             /** @var \yii\db\ActiveRecord $modelClass */
             $modelClass = $this->modelClass;
-            if (($review = $modelClass::findReview($this->modelId)) != null) {
+            if (($content = $modelClass::findReview($this->modelId)) != null) {
                 $suggestion = $this->green([
                     'action' => $this->scenario,
                     'category' => $this->category,
-                    'content' => $review,
+                    'content' => $content,
                 ]);
-                $modelClass::review($suggestion);
+                $modelClass::review($this->modelId, $suggestion);
             }
         }
     }

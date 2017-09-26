@@ -16,10 +16,11 @@ interface ScanInterface
 
     /**
      * 机器审核
+     * @param int $id model id
      * @param string $suggestion the ID to be looked for
      * @return void
      */
-    public static function review($suggestion);
+    public static function review($id, $suggestion);
 
     /**
      * 获取待审
