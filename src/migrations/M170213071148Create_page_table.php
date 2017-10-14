@@ -24,12 +24,12 @@ class M170213071148Create_page_table extends Migration
             'view' => $this->string()->notNull()->defaultValue('show.php'),
             'views' => $this->integer()->defaultValue(0),
             'status' => $this->boolean()->defaultValue(true),
-            'user_id' => $this->integer(),
+            'user_id' => $this->integer()->unsigned(),
             'created_at' => $this->integer()->unsigned()->notNull(),
             'updated_at' => $this->integer()->unsigned()->notNull(),
         ], $tableOptions);
 
-        $this->addForeignKey('{{%page_ibfk_1}}', '{{%page}}', 'user_id', '{{%user}}', 'id', 'SET NULL', 'CASCADE');
+        $this->addForeignKey('{{%page_ibfk_1}}', '{{%page}}', 'user_id', '{{%admin}}', 'id', 'SET NULL', 'CASCADE');
     }
 
     public function down()
