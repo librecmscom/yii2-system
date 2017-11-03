@@ -13,8 +13,7 @@
     "yiisoft/yii2-queue": "~2.0.0",
     "yii2tech/ar-position": "~1.0",
     "pheme/yii2-toggle-column": "*",
-    "yuncms/yii2-ueditor-widget": "~1.0",
-    "yuncms/yii2-composer": "~2.0.0"
+    "yuncms/yii2-ueditor-widget": "~1.0"
   },
   "require-dev": {
     "phpunit/PHPUnit": "~6.0"
